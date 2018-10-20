@@ -34,7 +34,7 @@ const routes: Routes = [
     component: MultiViewComponent
   },
   {
-    path: 'tracking ',
+    path: 'tracking',
     component: TrackingViewComponent
   }
 ];

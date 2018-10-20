@@ -1,5 +1,10 @@
-<mat-toolbar>
-  <span>Sports View</span>
+<mat-toolbar color="primary">
+  <span fxFlex>Sports View</span>
+  <mat-button-toggle-group fxLayoutAlign="end">
+      <mat-button-toggle *ngFor="let item of items" [routerLink]="item.route">
+        {{item.name}}
+      </mat-button-toggle>
+  </mat-button-toggle-group>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

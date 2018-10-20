@@ -10,6 +10,8 @@ import { MainViewComponent } from './main-view/main-view.component';
 import { HighlightViewComponent } from './highlight-view/highlight-view.component';
 import { TrackingViewComponent } from './tracking-view/tracking-view.component';
 import { AppMaterialModule } from './app-material/app-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,10 @@ import { AppMaterialModule } from './app-material/app-material.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
