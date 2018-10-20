@@ -13,6 +13,8 @@ import { AppMaterialModule } from './app-material/app-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartModule } from 'angular-highcharts';
+import { FocusedAnalyticViewComponent } from './focused-analytic-view/focused-analytic-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     AnalyticViewComponent,
     MainViewComponent,
     HighlightViewComponent,
-    TrackingViewComponent
+    TrackingViewComponent,
+    FocusedAnalyticViewComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     AppMaterialModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

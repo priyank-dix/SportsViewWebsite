@@ -6,6 +6,7 @@ import { FieldViewComponent } from './field-view/field-view.component';
 import { HighlightViewComponent } from './highlight-view/highlight-view.component';
 import { MultiViewComponent } from './multi-view/multi-view.component';
 import { TrackingViewComponent } from './tracking-view/tracking-view.component';
+import { FocusedAnalyticViewComponent } from './focused-analytic-view/focused-analytic-view.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'tracking',
     component: TrackingViewComponent
+  },
+  {
+    path: 'focused',
+    component: FocusedAnalyticViewComponent
   }
 ];
 
