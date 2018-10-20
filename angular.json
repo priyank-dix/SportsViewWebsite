@@ -90,6 +90,13 @@
               "src/favicon.ico",
               "src/assets"
             ]
+          },
+          "configurations": {
+            "package": {
+              "watch": false,
+              "browsers": "ChromeHeadless",
+              "progress": false
+            }
           }
         },
         "lint": {
