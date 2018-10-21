@@ -30,7 +30,7 @@ export class AppService {
   }
 
   public get stats() {
-    const timer$ = timer(0, 2500);
+    const timer$ = timer(0, 5000);
     return this.stats$ ? this.stats$ :
       this.stats$ = timer$.pipe(switchMap(_ => this.getStats()), shareReplay(CACHE_SIZE));
   }

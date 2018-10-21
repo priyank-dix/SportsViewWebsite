@@ -132,8 +132,8 @@ export class FocusedAnalyticViewComponent implements OnInit, OnDestroy {
       series: [
         {
           name: 'Calories',
-          // @ts-ignore
-          data: combined.map(value => value.distance * 0.0625)
+          data: combined.map(value => value.distance * 0.0625),
+          color: this.service.hsvToRgb(stats.averageHue, 1, 1)
         }
       ]
     });
