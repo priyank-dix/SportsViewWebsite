@@ -4,6 +4,7 @@ import { AnalyticViewComponent } from './analytic-view.component';
 import { AppService } from '../app.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AppMaterialModule } from '../app-material/app-material.module';
 
 describe('AnalyticViewComponent', () => {
   let component: AnalyticViewComponent;
@@ -11,7 +12,7 @@ describe('AnalyticViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, RouterTestingModule],
+      imports: [HttpClientModule, RouterTestingModule, AppMaterialModule],
       providers: [AppService],
       declarations: [ AnalyticViewComponent ]
     })

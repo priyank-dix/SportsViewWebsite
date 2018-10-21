@@ -1,5 +1,9 @@
-<div>
-  <div *ngFor="let item of players">
-    <button mat-raised-button (click)="viewPlayer(item)">{{item.player}}</button>
-  </div>
+<div *ngFor="let s of size" fxFlex=50>
+  <a (click)="viewChart(s)">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Actor {{s + 1}}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </a>
 </div>

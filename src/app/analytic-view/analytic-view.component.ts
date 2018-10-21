@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import { Player } from '../models/player';
-import { Chart } from 'angular-highcharts';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,23 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./analytic-view.component.scss']
 })
 export class AnalyticViewComponent implements OnInit {
-  public players: Player[];
-  public chart: Chart;
+  size: number[];
 
   constructor(private service: AppService, private router: Router) {
-    this.players = [];
   }
 
   ngOnInit() {
-    this.service.players.subscribe((data) => {
-      this.players = data;
+    this.service.getStatsNum().subscribe((item) => {
+      this.size = Array.from({ length: item.size }, (v, i) => i);
     });
   }
 
-  viewPlayer = (player: Player) => {
+  viewChart = (pick: number) => {
     this.router.navigate(['focused'], {
       queryParams: {
-        'player': player.player
+        'chart': pick
       }
     });
   }

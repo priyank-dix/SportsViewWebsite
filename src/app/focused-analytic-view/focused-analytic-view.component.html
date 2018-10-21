@@ -1,1 +1,5 @@
-<div [chart]="player.chart"></div>
+<div fxLayoutAlign="row">
+    <div [chart]="statsChart"></div>
+    <div [chart]="calorieChart"></div>
+</div>
+<button mat-raised-button [routerLink]="['/analytic']" color="accent">Back</button>
