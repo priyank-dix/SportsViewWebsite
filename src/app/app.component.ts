@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'hackWebsite';
   items = [
     {
-      name: 'Multi View',
+      name: 'Camera View',
       route: '/multi'
     },
     {
