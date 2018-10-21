@@ -1,5 +1,8 @@
 <div fxLayoutAlign="center center">
-    <div [chart]="statsChart"></div>
-    <div [chart]="calorieChart"></div>
+  <div [chart]="statsChart" class="vertical-chart"></div>
+  <div>
+    <div [chart]="calorieChart" class="horizontal-chart"></div>
+    <div [chart]="speedChart" class="horizontal-chart"></div>
+  </div>
 </div>
 <button mat-raised-button [routerLink]="['/analytic']" color="accent">Back</button>

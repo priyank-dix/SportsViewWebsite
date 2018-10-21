@@ -16,7 +16,7 @@ export class FocusedAnalyticViewComponent implements OnInit, OnDestroy {
   stats: PlayerModel;
   statsChart: Chart;
   calorieChart: Chart;
-
+  speedChart: Chart;
 
   constructor(private route: ActivatedRoute, private service: AppService) {
 
@@ -28,7 +28,8 @@ export class FocusedAnalyticViewComponent implements OnInit, OnDestroy {
         map(value => value.find(stat => stat.playerId === Number(params['chart'])))
       )),
       tap(this.makeStatsChart),
-      tap(this.makeCalorieChart)
+      tap(this.makeCalorieChart),
+      tap(this.makeSpeedChart)
     ).subscribe();
   }
 
@@ -41,7 +42,8 @@ export class FocusedAnalyticViewComponent implements OnInit, OnDestroy {
       chart: {
         type: 'scatter',
         width: 400,
-        height: 800
+        height: 800,
+        backgroundColor: '#c2c2d6'
       },
       title: {
         text: 'Position'
@@ -106,7 +108,8 @@ export class FocusedAnalyticViewComponent implements OnInit, OnDestroy {
       chart: {
         type: 'line',
         width: 800,
-        height: 400
+        height: 400,
+        backgroundColor: '#c2c2d6'
       },
       title: {
         text: 'Calories Burned'
@@ -133,6 +136,45 @@ export class FocusedAnalyticViewComponent implements OnInit, OnDestroy {
         {
           name: 'Calories',
           data: combined.map(value => value.distance * 0.0625),
+          color: this.service.hsvToRgb(stats.averageHue, 1, 1)
+        }
+      ]
+    });
+  }
+
+  makeSpeedChart = (stats: PlayerModel) => {
+    this.speedChart = new Chart({
+      chart: {
+        type: 'line',
+        width: 800,
+        height: 400,
+        backgroundColor: '#c2c2d6'
+      },
+      title: {
+        text: 'Average Speed'
+      },
+      yAxis: {
+        title: {
+          text: 'Speed (m/s)'
+        }
+      },
+      xAxis: {
+        title: {
+          text: 'Time'
+        }
+      },
+      credits: {
+        enabled: false
+      },
+      plotOptions: {
+        line: {
+          animation: false
+        }
+      },
+      series: [
+        {
+          name: 'Calories',
+          data: stats.speed,
           color: this.service.hsvToRgb(stats.averageHue, 1, 1)
         }
       ]

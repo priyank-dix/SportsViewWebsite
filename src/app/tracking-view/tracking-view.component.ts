@@ -75,6 +75,7 @@ export class TrackingViewComponent implements OnInit {
       series: [{
         data: stats.map((poss) => <any>{
           name: poss.playerId,
+          color: this.service.hsvToRgb(poss.averageHue, 1, 1),
           y: this.possession.filter(val => val === poss.playerId).length / this.possession.length
         })
       }]
