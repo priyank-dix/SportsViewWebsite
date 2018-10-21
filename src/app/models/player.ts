@@ -11,3 +11,11 @@ export class Player {
 class Speeds {
   [id: string]: number;
 }
+
+export class LiteStats {
+  playerId: number;
+  distance: number;
+  speed: number;
+  time: number;
+  averageHue: number;
+}

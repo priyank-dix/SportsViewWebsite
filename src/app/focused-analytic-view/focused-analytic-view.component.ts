@@ -83,7 +83,7 @@ export class FocusedAnalyticViewComponent implements OnInit, OnDestroy {
       },
       series: [
         {
-          name: 'Stats',
+          name: 'Position',
           // @ts-ignore
           data: stats.position.map((value) => [value.x, value.y]),
           color: this.service.hsvToRgb(stats.averageHue, 1, 1)

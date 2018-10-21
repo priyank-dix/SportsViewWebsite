@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Player } from './models/player';
+import { Player, LiteStats } from './models/player';
 import { Observable, timer } from 'rxjs';
 import { shareReplay, map, switchMap } from 'rxjs/operators';
 import { DataAPIModel, DataModel } from './models/data';
@@ -16,6 +16,7 @@ export class AppService {
   private players$: Observable<Array<Player>>;
   private data$: Observable<Array<DataModel>>;
   private stats$: Observable<Array<PlayerModel>>;
+  public ball: PlayerModel;
 
   constructor(private http: HttpClient) { }
 
@@ -37,15 +38,19 @@ export class AppService {
 
   private getAllPlayers = () => this.http.get<Player[]>(`${BASE_URL}/players/all`);
 
-  private getData = () => this.http.get<DataAPIModel[]>(`${BASE_URL}/data/all`).pipe(
-    map((data) => data.map(DataModel.CONVERT_API_MODEL))
-  )
+  private getData = () => this.http.get<DataAPIModel[]>(`${BASE_URL}/data/all`)
+    .pipe(map((data) => data.map(DataModel.CONVERT_API_MODEL)))
 
   private getStats = () => this.http.get<PlayerModel[]>(`${BASE_URL}/stats`);
 
-  public getStatsNum = () => this.http.get<{size: number}>(`${BASE_URL}/stats/num`);
+  public getLiteStats = () => this.http.get<LiteStats[]>(`${BASE_URL}/stats/lite`);
 
+  public getStatsNum = () => this.http.get<{ size: number }>(`${BASE_URL}/stats/num`);
 
+  filterBall = (stats: PlayerModel[]) => {
+    this.ball = stats.find((value) => value.averageHue === -1);
+    return stats.filter((value) => value.averageHue !== -1);
+  }
 
   public hsvToRgb = (h, s, v) => {
     let r, g, b;
@@ -67,7 +72,7 @@ export class AppService {
     return this.hex(r * 255, g * 255, b * 255);
   }
 
-  public hex = (r, g, b) => '#' + this.hexConv(r) + this.hexConv(g) + this.hexConv(b);
+  public hex = (r, g, b) => '#' + this.hexConv(r) + this.hexConv(g) + this.hexConv(b);
 
   public hexConv = (num) => {
     let hex = Number(Math.floor(num)).toString(16);
@@ -78,11 +83,11 @@ export class AppService {
   }
 
   public cumulativeSum = ([head, ...tail]): any[] =>
-  tail.reduce((acc, x, index) => {
-    acc.push({
-      distance: acc[index].distance + x.distance,
-      time: acc[index].time + x.time
-    });
-    return acc;
-}, [head])
+    tail.reduce((acc, x, index) => {
+      acc.push({
+        distance: acc[index].distance + x.distance,
+        time: acc[index].time + x.time
+      });
+      return acc;
+    }, [head])
 }

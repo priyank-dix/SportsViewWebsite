@@ -9,14 +9,6 @@ export class AppComponent implements OnInit {
   title = 'hackWebsite';
   items = [
     {
-      name: 'Field View',
-      route: '/field'
-    },
-    {
-      name: 'Highlight View',
-      route: '/highlight'
-    },
-    {
       name: 'Multi View',
       route: '/multi'
     },
@@ -29,7 +21,7 @@ export class AppComponent implements OnInit {
       route: '/analytic'
     },
   ];
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.router.navigate(['']);

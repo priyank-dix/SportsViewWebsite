@@ -1,4 +1,7 @@
-<div fxLayoutAlign="row">
-  <div [chart]="chart"></div>
-  <div [chart]="calorieChart"></div>
+<div fxLayoutAlign="center center" class="center-chart">
+  <div [chart]="chart" class="vertical-chart"></div>
+  <div>
+    <div [chart]="calorieChart" class="horizontal-chart"></div>
+    <div [chart]="posessionChart" class="horizontal-chart"></div>
+  </div>
 </div>
