@@ -54,6 +54,7 @@ export class AppService {
 
   public hsvToRgb = (h, s, v) => {
     let r, g, b;
+    h = h * 2;
 
     const i = Math.floor(h * 6);
     const f = h * 6 - i;
